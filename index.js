@@ -2,6 +2,26 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const axios = require('axios');
+const mysql = require('mysql2');
+const moment = require('moment');
+let connectionData = {
+  host: 'localhost',
+  port: 3306,
+  database: 'alarm',
+  user: 'fabio',
+  password: 'fabio',
+  multipleStatements: true,
+  connectionLimit: 10,
+};
+const db = mysql.createConnection(connectionData);
+db.connect((err) => {
+  if (err) {
+    console.error(err);
+    console.log('connect erreur');
+  } else {
+    console.log('connect successfully');
+  }
+});
 
 dotenv.config();
 
@@ -57,6 +77,7 @@ const getAlarm1 = (res) => {
       }
     }
   });
+  saveData(alarm);
 };
 
 const getAlarm2 = (res) => {
@@ -88,9 +109,67 @@ const getAlarm2 = (res) => {
   });
 };
 
+const saveData = (data) => {
+  let date = moment().format('MMMM Do YYYY, h:mm:ss a');
+  for (let i = 0; i < data.length; i++) {
+    const al = data[i];
+    if (al.PLOAD) {
+      db.query(
+        "INSERT INTO `alarm1` (`INT`, `PLOAD`, `CALIM`, `OFFDO`, `OFFDI`, `FTCHDO`, `FTCHDI`, `OFFMPH`, `OFFMPL`, `FTCHMPH`, `FTCHMPL`, `dateCreate`) VALUES ('" +
+          al.INT +
+          "', '" +
+          al.PLOAD +
+          "', '" +
+          al.CALIM +
+          "', '" +
+          al.OFFDO +
+          "', '" +
+          al.OFFDI +
+          "', '" +
+          al.FTCHDO +
+          "', '" +
+          al.FTCHDI +
+          "', '" +
+          al.OFFMPH +
+          "', '" +
+          al.OFFMPL +
+          "', '" +
+          al.FTCHMPH +
+          "', '" +
+          al.FTCHMPL +
+          "', '" +
+          date +
+          "');",
+        al,
+        function (err, result) {
+          if (err) throw err;
+          console.log('data 1 inserted');
+        }
+      );
+    } else {
+      db.query(
+        "INSERT INTO `alarm2` (`INT`, `OFFTCAP`, `FTDTCAP`, `dateCreate`) VALUES ('" +
+          al.INT +
+          "', '" +
+          al.OFFTCAP +
+          "', '" +
+          al.FTDTCAP +
+          "', '" +
+          date +
+          "');",
+        al,
+        function (err, result) {
+          if (err) throw err;
+          console.log('data 2 inserted');
+        }
+      );
+    }
+  }
+};
+
 const test = {
   nodeIP: '10.32.2.6',
-  cmd: 'SAAEP:SAE=604,BLOCK=SCCLM',
+  cmd: '-cp cp1 plldp',
 };
 
 getDataAlarm(test);
