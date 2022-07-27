@@ -1,5 +1,40 @@
-@import url('https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css');
+@import url('https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css');
 
 .test {
-  padding: 10px;
+  margin-top: 50px;
+  min-width: 670px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.table {
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.page-item.active .page-link {
+  background-color: #000;
+  border-color: #000;
+  border-radius: 4px;
+}
+
+.page-link {
+  color: #000;
+}
+
+.page-link:hover {
+  color: #000;
+}
+
+.page-link:focus {
+  color: #000;
+  box-shadow: none;
+}
+
+.disabled {
+  cursor: not-allowed;
 }

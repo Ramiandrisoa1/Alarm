@@ -1,9 +1,7 @@
-<head>
-  <link href="/css/style.css" rel="stylesheet" type="text/css" />
-</head>
+<%- include('./index') %>
 <div class="test">
-  <table class="table">
-    <thead class="thead-dark">
+  <table id="table_data" class="table table-striped">
+    <thead class="table-dark">
       <tr>
         <th scope="col">INT</th>
         <th scope="col">PLOAD</th>
@@ -16,7 +14,7 @@
         <th scope="col">OFFMPL</th>
         <th scope="col">FTCHMPH</th>
         <th scope="col">FTCHMPL</th>
-        <th scope="col">Date de création</th>
+        <th scope="col" class="d-flex justify-content-center">DATE</th>
       </tr>
     </thead>
     <tbody>
