@@ -1,0 +1,36 @@
+<table>
+  <thead>
+    <tr>
+      <th>INT</th>
+      <th>PLOAD</th>
+      <th>CALIM</th>
+      <th>OFFDO</th>
+      <th>OFFDI</th>
+      <th>FTCHDO</th>
+      <th>FTCHDI</th>
+      <th>OFFMPH</th>
+      <th>OFFMPL</th>
+      <th>FTCHMPH</th>
+      <th>FTCHMPL</th>
+      <th>Date de création</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% res.forEach(function(alarm) { %>
+    <tr>
+      <td><%= alarm.INT %></td>
+      <td><%= alarm.PLOAD %></td>
+      <td><%= alarm.CALIM %></td>
+      <td><%= alarm.OFFDO %></td>
+      <td><%= alarm.OFFDI %></td>
+      <td><%= alarm.FTCHDO %></td>
+      <td><%= alarm.FTCHDI %></td>
+      <td><%= alarm.OFFMPH %></td>
+      <td><%= alarm.OFFMPL %></td>
+      <td><%= alarm.FTCHMPH %></td>
+      <td><%= alarm.FTCHMPL %></td>
+      <td><%= alarm.dateCreate %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
