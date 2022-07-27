@@ -190,6 +190,15 @@ app.get('/list-alarm1', function (request, response) {
   });
 });
 
+app.get('/list-alarm2', function (request, response) {
+  db.query('SELECT * FROM `alarm2`', (error, res) => {
+    if (error) throw error;
+    response.render('pages/alarm2', {
+      res: res,
+    });
+  });
+});
+
 app.listen(process.env.PORT, () =>
   console.log('app is listening on url http://localhost:' + process.env.PORT)
 );
