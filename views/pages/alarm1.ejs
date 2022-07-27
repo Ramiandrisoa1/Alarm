@@ -1,0 +1,41 @@
+<head>
+  <link href="/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<div class="test">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">INT</th>
+        <th scope="col">PLOAD</th>
+        <th scope="col">CALIM</th>
+        <th scope="col">OFFDO</th>
+        <th scope="col">OFFDI</th>
+        <th scope="col">FTCHDO</th>
+        <th scope="col">FTCHDI</th>
+        <th scope="col">OFFMPH</th>
+        <th scope="col">OFFMPL</th>
+        <th scope="col">FTCHMPH</th>
+        <th scope="col">FTCHMPL</th>
+        <th scope="col">Date de création</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% res.forEach(function(alarm) { %>
+      <tr>
+        <td><%= alarm.INT %></td>
+        <td><%= alarm.PLOAD %></td>
+        <td><%= alarm.CALIM %></td>
+        <td><%= alarm.OFFDO %></td>
+        <td><%= alarm.OFFDI %></td>
+        <td><%= alarm.FTCHDO %></td>
+        <td><%= alarm.FTCHDI %></td>
+        <td><%= alarm.OFFMPH %></td>
+        <td><%= alarm.OFFMPL %></td>
+        <td><%= alarm.FTCHMPH %></td>
+        <td><%= alarm.FTCHMPL %></td>
+        <td><%= alarm.dateCreate %></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,25 @@
+<head>
+  <link href="/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<div class="test">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">INT</th>
+        <th scope="col">OFFTCAP</th>
+        <th scope="col">FTDTCAP</th>
+        <th scope="col">Date de création</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% res.forEach(function(alarm) { %>
+      <tr>
+        <td><%= alarm.INT %></td>
+        <td><%= alarm.OFFTCAP %></td>
+        <td><%= alarm.FTDTCAP %></td>
+        <td><%= alarm.dateCreate %></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>
