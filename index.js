@@ -113,7 +113,7 @@ const getAlarm2 = (res) => {
 };
 
 const saveData = (data) => {
-  let date = moment().format('YYYY-MM-D  hh:mm:ss');
+  let date = moment().format('YYYY-MM-D  HH:mm:ss');
   for (let i = 0; i < data.length; i++) {
     const al = data[i];
     if (al.PLOAD) {
@@ -181,10 +181,10 @@ app.get('/', function (request, response) {
   response.send(alarm);
 });
 
-app.get('/list', function (request, response) {
+app.get('/list-alarm1', function (request, response) {
   db.query('SELECT * FROM `alarm1`', (error, res) => {
     if (error) throw error;
-    response.render('pages/index', {
+    response.render('pages/alarm1', {
       res: res,
     });
   });
