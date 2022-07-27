@@ -27,6 +27,8 @@ dotenv.config();
 
 const app = express();
 
+app.set('view engine', 'ejs');
+
 const getDataAlarm = (data) => {
   return axios
     .post('http://10.200.200.20:3018/run_axeCmd', {
@@ -48,6 +50,7 @@ const getDataAlarm = (data) => {
 };
 
 const alarm = [];
+
 const getAlarm1 = (res) => {
   const textSplit = res.split('\n');
   textSplit.map((text, index) => {
@@ -77,7 +80,7 @@ const getAlarm1 = (res) => {
       }
     }
   });
-  saveData(alarm);
+  // saveData(alarm);
 };
 
 const getAlarm2 = (res) => {
@@ -110,7 +113,7 @@ const getAlarm2 = (res) => {
 };
 
 const saveData = (data) => {
-  let date = moment().format('MMMM Do YYYY, h:mm:ss a');
+  let date = moment().format('YYYY-MM-D  hh:mm:ss');
   for (let i = 0; i < data.length; i++) {
     const al = data[i];
     if (al.PLOAD) {
@@ -176,6 +179,15 @@ getDataAlarm(test);
 
 app.get('/', function (request, response) {
   response.send(alarm);
+});
+
+app.get('/list', function (request, response) {
+  db.query('SELECT * FROM `alarm1`', (error, res) => {
+    if (error) throw error;
+    response.render('pages/index', {
+      res: res,
+    });
+  });
 });
 
 app.listen(process.env.PORT, () =>
