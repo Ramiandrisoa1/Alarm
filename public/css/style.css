@@ -7,8 +7,7 @@
 }
 
 .table-content-2 {
-  min-width: 670px;
-  max-width: 670px;
+  width: 670px;
 }
 
 body {
