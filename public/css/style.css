@@ -1,9 +1,14 @@
 @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css');
 @import url('https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css');
 
-.table-content {
+.table-content-1,
+.table-content-2 {
   margin-top: 50px;
+}
+
+.table-content-2 {
   min-width: 670px;
+  max-width: 670px;
 }
 
 body {
