@@ -198,7 +198,7 @@ app.get('/alarms1', function (request, response) {
   });
 });
 
-app.get('/graphe1', function (request, response) {
+app.get('/list-alarm1/graphe1', function (request, response) {
   db.query('SELECT * FROM `alarm1`', (error, res) => {
     if (error) throw error;
     response.render('pages/graphe1', {

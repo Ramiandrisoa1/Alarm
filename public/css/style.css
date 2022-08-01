@@ -42,3 +42,26 @@ body {
 .disabled {
   cursor: not-allowed;
 }
+
+.btn-graphe button {
+  margin-bottom: 20px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-graphe button:hover {
+  background: #000;
+}
+
+.btn-graphe button a:hover {
+  color: #fff;
+}
+
+.btn-graphe button a {
+  text-decoration: none;
+  padding: 0 10px;
+  color: #000;
+  transition: all 0.2s ease-in-out;
+}
