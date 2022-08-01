@@ -1,0 +1,102 @@
+<%- include('./index') %>
+<div id="graphe2" style="width: 1500px; height: 170vh"></div>
+<script type="text/javascript">
+  $.get('http://localhost:8080/alarms2', function (data) {
+    const date = [];
+    const OFFTCAPvalue = [];
+    const FTDTCAPvalue = [];
+    for (let i = 0; i < data.length; i++) {
+      let d = data[i];
+      date.push(d.dateCreate);
+      OFFTCAPvalue.push(d.OFFTCAP);
+      FTDTCAPvalue.push(d.FTDTCAP);
+
+      var myChart = echarts.init(document.getElementById('graphe2'));
+      var option;
+
+      const dataX = date;
+
+      const dateList = dataX.map(function (item) {
+        return item;
+      });
+
+      const dataOFFTCAP = OFFTCAPvalue.map(function (item) {
+        return item;
+      });
+
+      const dataFTDTCAP = FTDTCAPvalue.map(function (item) {
+        return item;
+      });
+
+      option = {
+        title: [
+          {
+            top: '20px',
+            left: '7%',
+            text: 'OFFTCAP',
+          },
+          {
+            top: '20px',
+            right: '7%',
+            text: 'FTDTCAP',
+          },
+        ],
+
+        toolbox: {
+          feature: {
+            saveAsImage: {},
+          },
+        },
+
+        tooltip: {
+          trigger: 'axis',
+        },
+
+        xAxis: [
+          {
+            data: dateList,
+          },
+          {
+            data: dateList,
+            gridIndex: 1,
+          },
+        ],
+
+        xAxis: [
+          { gridIndex: 0, data: dateList },
+          { gridIndex: 1, data: dateList },
+        ],
+
+        yAxis: [{ gridIndex: 0 }, { gridIndex: 1 }],
+
+        grid: [
+          { left: '7%', top: '60px', width: '38%', height: '200px' },
+          { right: '7%', top: '60px', width: '38%', height: '200px' },
+        ],
+
+        series: [
+          {
+            name: 'Data OFFTCAP',
+            type: 'line',
+            showSymbol: false,
+            itemStyle: { color: 'rgba(58,77,233,0.8)' },
+            areaStyle: { color: 'rgba(58,77,233,0.3)' },
+            data: dataOFFTCAP,
+          },
+          {
+            name: 'Data FTDTCAP',
+            type: 'line',
+            showSymbol: false,
+            itemStyle: { color: 'rgba(58,77,233,0.8)' },
+            areaStyle: { color: 'rgba(58,77,233,0.3)' },
+            xAxisIndex: 1,
+            yAxisIndex: 1,
+            data: dataFTDTCAP,
+          },
+        ],
+      };
+
+      option && myChart.setOption(option);
+    }
+  });
+</script>

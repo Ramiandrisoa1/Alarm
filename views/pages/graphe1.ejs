@@ -1,5 +1,5 @@
 <%- include('./index') %>
-<div id="main" style="width: 1500px; height: 170vh"></div>
+<div id="graphe1" style="width: 1500px; height: 170vh"></div>
 <script type="text/javascript">
   $.get('http://localhost:8080/alarms1', function (data) {
     const date = [];
@@ -27,7 +27,7 @@
       FTCHMPHvalue.push(d.FTCHMPH);
       FTCHMPLvalue.push(d.FTCHMPL);
 
-      var myChart = echarts.init(document.getElementById('main'));
+      var myChart = echarts.init(document.getElementById('graphe1'));
       var option;
 
       const dataX = date;

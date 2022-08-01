@@ -216,6 +216,21 @@ app.get('/list-alarm2', function (request, response) {
   });
 });
 
+app.get('/alarms2', function (request, response) {
+  db.query('SELECT * FROM `alarm2`', (error, res) => {
+    return response.status(201).json(res);
+  });
+});
+
+app.get('/list-alarm2/graphe2', function (request, response) {
+  db.query('SELECT * FROM `alarm2`', (error, res) => {
+    if (error) throw error;
+    response.render('pages/graphe2', {
+      res: res,
+    });
+  });
+});
+
 app.listen(process.env.PORT, () =>
   console.log('app is listening on url http://localhost:' + process.env.PORT)
 );
