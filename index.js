@@ -192,6 +192,21 @@ app.get('/list-alarm1', function (request, response) {
   });
 });
 
+app.get('/alarms1', function (request, response) {
+  db.query('SELECT * FROM `alarm1`', (error, res) => {
+    return response.status(201).json(res);
+  });
+});
+
+app.get('/graphe1', function (request, response) {
+  db.query('SELECT * FROM `alarm1`', (error, res) => {
+    if (error) throw error;
+    response.render('pages/graphe1', {
+      graphe: res,
+    });
+  });
+});
+
 app.get('/list-alarm2', function (request, response) {
   db.query('SELECT * FROM `alarm2`', (error, res) => {
     if (error) throw error;

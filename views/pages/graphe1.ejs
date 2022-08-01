@@ -1,0 +1,329 @@
+<%- include('./index') %>
+<div id="main" style="width: 1500px; height: 180vh"></div>
+<script type="text/javascript">
+  $.get('http://localhost:8080/alarms1', function (data) {
+    const date = [];
+    const PLOADvalue = [];
+    const CALIMvalue = [];
+    const OFFDOvalue = [];
+    const OFFDIvalue = [];
+    const FTCHDOvalue = [];
+    const FTCHDIvalue = [];
+    const OFFMPHvalue = [];
+    const OFFMPLvalue = [];
+    const FTCHMPHvalue = [];
+    const FTCHMPLvalue = [];
+    for (let i = 0; i < data.length; i++) {
+      let d = data[i];
+      date.push(d.dateCreate);
+      PLOADvalue.push(d.PLOAD);
+      CALIMvalue.push(d.CALIM);
+      OFFDOvalue.push(d.OFFDO);
+      OFFDIvalue.push(d.OFFDI);
+      FTCHDOvalue.push(d.FTCHDO);
+      FTCHDIvalue.push(d.FTCHDI);
+      OFFMPHvalue.push(d.OFFMPH);
+      OFFMPLvalue.push(d.OFFMPL);
+      FTCHMPHvalue.push(d.FTCHMPH);
+      FTCHMPLvalue.push(d.FTCHMPL);
+
+      var myChart = echarts.init(document.getElementById('main'));
+      var option;
+
+      const dataX = date;
+
+      const dateList = dataX.map(function (item) {
+        return item;
+      });
+
+      const dataPLOAD = PLOADvalue.map(function (item) {
+        return item;
+      });
+
+      const dataCALIM = CALIMvalue.map(function (item) {
+        return item;
+      });
+
+      const dataOFFDO = OFFDOvalue.map(function (item) {
+        return item;
+      });
+
+      const dataOFFDI = OFFDIvalue.map(function (item) {
+        return item;
+      });
+
+      const dataFTCHDO = FTCHDOvalue.map(function (item) {
+        return item;
+      });
+
+      const dataFTCHDI = FTCHDIvalue.map(function (item) {
+        return item;
+      });
+
+      const dataOFFMPH = OFFMPHvalue.map(function (item) {
+        return item;
+      });
+
+      const dataOFFMPL = OFFMPLvalue.map(function (item) {
+        return item;
+      });
+
+      const dataFTCHMPH = FTCHMPHvalue.map(function (item) {
+        return item;
+      });
+
+      const dataFTCHMPL = FTCHMPLvalue.map(function (item) {
+        return item;
+      });
+
+      option = {
+        title: [
+          {
+            top: '20px',
+            left: '7%',
+            text: 'PLOAD',
+          },
+          {
+            top: '20px',
+            right: '7%',
+            text: 'CALIM',
+          },
+          {
+            top: '300px',
+            left: '7%',
+            text: 'OFFDO',
+          },
+          {
+            top: '300px',
+            right: '7%',
+            text: 'OFFDI',
+          },
+          {
+            top: '600px',
+            left: '7%',
+            text: 'FTCHDO',
+          },
+          {
+            top: '600px',
+            right: '7%',
+            text: 'FTCHDI',
+          },
+          {
+            top: '900px',
+            left: '7%',
+            text: 'OFFMPH',
+          },
+          {
+            top: '900px',
+            right: '7%',
+            text: 'OFFMPL',
+          },
+          {
+            top: '1200px',
+            left: '7%',
+            text: 'FTCHMPH',
+          },
+          {
+            top: '1200px',
+            right: '7%',
+            text: 'FTCHMPL',
+          },
+        ],
+
+        toolbox: {
+          feature: {
+            saveAsImage: {},
+          },
+        },
+
+        tooltip: {
+          trigger: 'axis',
+        },
+
+        xAxis: [
+          {
+            data: dateList,
+          },
+          {
+            data: dateList,
+            gridIndex: 1,
+          },
+          {
+            data: dateList,
+            gridIndex: 2,
+          },
+          {
+            data: dateList,
+            gridIndex: 3,
+          },
+          {
+            data: dateList,
+            gridIndex: 4,
+          },
+          {
+            data: dateList,
+            gridIndex: 5,
+          },
+          {
+            data: dateList,
+            gridIndex: 6,
+          },
+          {
+            data: dateList,
+            gridIndex: 7,
+          },
+          {
+            data: dateList,
+            gridIndex: 8,
+          },
+          {
+            data: dateList,
+            gridIndex: 9,
+          },
+        ],
+
+        xAxis: [
+          { gridIndex: 0, data: dateList },
+          { gridIndex: 1, data: dateList },
+          { gridIndex: 2, data: dateList },
+          { gridIndex: 3, data: dateList },
+          { gridIndex: 4, data: dateList },
+          { gridIndex: 5, data: dateList },
+          { gridIndex: 6, data: dateList },
+          { gridIndex: 7, data: dateList },
+          { gridIndex: 8, data: dateList },
+          { gridIndex: 9, data: dateList },
+        ],
+
+        yAxis: [
+          { gridIndex: 0 },
+          { gridIndex: 1 },
+          { gridIndex: 2 },
+          { gridIndex: 3 },
+          { gridIndex: 4 },
+          { gridIndex: 5 },
+          { gridIndex: 6 },
+          { gridIndex: 7 },
+          { gridIndex: 8 },
+          { gridIndex: 9 },
+        ],
+
+        grid: [
+          { left: '7%', top: '60px', width: '38%', height: '200px' },
+          { right: '7%', top: '60px', width: '38%', height: '200px' },
+          { left: '7%', top: '340px', width: '38%', height: '200px' },
+          { right: '7%', top: '340px', width: '38%', height: '200px' },
+          { left: '7%', top: '640px', width: '38%', height: '200px' },
+          { right: '7%', top: '640px', width: '38%', height: '200px' },
+          { left: '7%', top: '940px', width: '38%', height: '200px' },
+          { right: '7%', top: '940px', width: '38%', height: '200px' },
+          { left: '7%', top: '1240px', width: '38%', height: '200px' },
+          { right: '7%', top: '1240px', width: '38%', height: '200px' },
+        ],
+
+        series: [
+          {
+            name: 'Data',
+            type: 'line',
+            showSymbol: false,
+            itemStyle: {},
+            areaStyle: {},
+            data: dataPLOAD,
+          },
+          {
+            name: 'Data',
+            type: 'line',
+            showSymbol: false,
+            itemStyle: {},
+            areaStyle: {},
+            xAxisIndex: 1,
+            yAxisIndex: 1,
+            data: dataCALIM,
+          },
+          {
+            name: 'Data',
+            type: 'line',
+            showSymbol: false,
+            itemStyle: {},
+            areaStyle: {},
+            xAxisIndex: 2,
+            yAxisIndex: 2,
+            data: dataOFFDO,
+          },
+          {
+            name: 'Data',
+            type: 'line',
+            showSymbol: false,
+            itemStyle: {},
+            areaStyle: {},
+            xAxisIndex: 3,
+            yAxisIndex: 3,
+            data: dataOFFDI,
+          },
+          {
+            name: 'Data',
+            type: 'line',
+            showSymbol: false,
+            itemStyle: {},
+            areaStyle: {},
+            xAxisIndex: 4,
+            yAxisIndex: 4,
+            data: dataFTCHDO,
+          },
+          {
+            name: 'Data',
+            type: 'line',
+            showSymbol: false,
+            itemStyle: {},
+            areaStyle: {},
+            xAxisIndex: 5,
+            yAxisIndex: 5,
+            data: dataFTCHDI,
+          },
+          {
+            name: 'Data',
+            type: 'line',
+            showSymbol: false,
+            itemStyle: {},
+            areaStyle: {},
+            xAxisIndex: 6,
+            yAxisIndex: 6,
+            data: dataOFFMPH,
+          },
+          {
+            name: 'Data',
+            type: 'line',
+            showSymbol: false,
+            itemStyle: {},
+            areaStyle: {},
+            xAxisIndex: 7,
+            yAxisIndex: 7,
+            data: dataOFFMPL,
+          },
+          {
+            name: 'Data',
+            type: 'line',
+            showSymbol: false,
+            itemStyle: {},
+            areaStyle: {},
+            xAxisIndex: 8,
+            yAxisIndex: 8,
+            data: dataFTCHMPH,
+          },
+          {
+            name: 'Data',
+            type: 'line',
+            showSymbol: false,
+            itemStyle: {},
+            areaStyle: {},
+            xAxisIndex: 9,
+            yAxisIndex: 9,
+            data: dataFTCHMPL,
+          },
+        ],
+      };
+
+      option && myChart.setOption(option);
+    }
+  });
+</script>
