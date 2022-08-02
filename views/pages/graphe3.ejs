@@ -1,33 +1,27 @@
 <%- include('./index') %>
-<div id="graphe1" style="width: 1500px; height: 200vh"></div>
+<div id="graphe2" style="width: 1500px; height: 170vh"></div>
 <script type="text/javascript">
-  $.get('http://localhost:8080/alarms1', function (data) {
+  $.get('http://localhost:8080/alarms3', function (data) {
     const date = [];
-    const PLOADvalue = [];
-    const CALIMvalue = [];
-    const OFFDOvalue = [];
-    const OFFDIvalue = [];
-    const FTCHDOvalue = [];
-    const FTCHDIvalue = [];
-    const OFFMPHvalue = [];
-    const OFFMPLvalue = [];
-    const FTCHMPHvalue = [];
-    const FTCHMPLvalue = [];
+    const SAEvalue = [];
+    const BLOCKvalue = [];
+    const CNTRTYPvalue = [];
+    const NIvalue = [];
+    const NIUvalue = [];
+    const NIEvalue = [];
+    const NIRvalue = [];
     for (let i = 0; i < data.length; i++) {
       let d = data[i];
       date.push(d.dateCreate);
-      PLOADvalue.push(d.PLOAD);
-      CALIMvalue.push(d.CALIM);
-      OFFDOvalue.push(d.OFFDO);
-      OFFDIvalue.push(d.OFFDI);
-      FTCHDOvalue.push(d.FTCHDO);
-      FTCHDIvalue.push(d.FTCHDI);
-      OFFMPHvalue.push(d.OFFMPH);
-      OFFMPLvalue.push(d.OFFMPL);
-      FTCHMPHvalue.push(d.FTCHMPH);
-      FTCHMPLvalue.push(d.FTCHMPL);
+      SAEvalue.push(d.SAE);
+      BLOCKvalue.push(d.BLOCK);
+      CNTRTYPvalue.push(d.CNTRTYP);
+      NIvalue.push(d.NI);
+      NIUvalue.push(d.NIU);
+      NIEvalue.push(d.NIE);
+      NIRvalue.push(d.NIR);
 
-      var myChart = echarts.init(document.getElementById('graphe1'));
+      var myChart = echarts.init(document.getElementById('graphe2'));
       var option;
 
       const dataX = date;
@@ -36,43 +30,31 @@
         return item;
       });
 
-      const dataPLOAD = PLOADvalue.map(function (item) {
+      const dataSAE = SAEvalue.map(function (item) {
         return item;
       });
 
-      const dataCALIM = CALIMvalue.map(function (item) {
+      const dataBLOCK = BLOCKvalue.map(function (item) {
         return item;
       });
 
-      const dataOFFDO = OFFDOvalue.map(function (item) {
+      const dataCNTRTYP = CNTRTYPvalue.map(function (item) {
         return item;
       });
 
-      const dataOFFDI = OFFDIvalue.map(function (item) {
+      const dataNI = NIvalue.map(function (item) {
         return item;
       });
 
-      const dataFTCHDO = FTCHDOvalue.map(function (item) {
+      const dataNIU = NIUvalue.map(function (item) {
         return item;
       });
 
-      const dataFTCHDI = FTCHDIvalue.map(function (item) {
+      const dataNIE = NIEvalue.map(function (item) {
         return item;
       });
 
-      const dataOFFMPH = OFFMPHvalue.map(function (item) {
-        return item;
-      });
-
-      const dataOFFMPL = OFFMPLvalue.map(function (item) {
-        return item;
-      });
-
-      const dataFTCHMPH = FTCHMPHvalue.map(function (item) {
-        return item;
-      });
-
-      const dataFTCHMPL = FTCHMPLvalue.map(function (item) {
+      const dataNIR = NIRvalue.map(function (item) {
         return item;
       });
 
@@ -81,12 +63,12 @@
           {
             top: '20px',
             left: '7%',
-            text: 'PLOAD',
+            text: 'SAE',
           },
           {
             top: '20px',
             right: '7%',
-            text: 'CALIM',
+            text: 'BLOCK',
           },
           {
             top: '300px',
@@ -112,21 +94,6 @@
             top: '900px',
             left: '7%',
             text: 'OFFMPH',
-          },
-          {
-            top: '900px',
-            right: '7%',
-            text: 'OFFMPL',
-          },
-          {
-            top: '1200px',
-            left: '7%',
-            text: 'FTCHMPH',
-          },
-          {
-            top: '1200px',
-            right: '7%',
-            text: 'FTCHMPL',
           },
         ],
 
@@ -168,18 +135,6 @@
             data: dateList,
             gridIndex: 6,
           },
-          {
-            data: dateList,
-            gridIndex: 7,
-          },
-          {
-            data: dateList,
-            gridIndex: 8,
-          },
-          {
-            data: dateList,
-            gridIndex: 9,
-          },
         ],
 
         xAxis: [
@@ -190,9 +145,6 @@
           { gridIndex: 4, data: dateList },
           { gridIndex: 5, data: dateList },
           { gridIndex: 6, data: dateList },
-          { gridIndex: 7, data: dateList },
-          { gridIndex: 8, data: dateList },
-          { gridIndex: 9, data: dateList },
         ],
 
         yAxis: [
@@ -203,9 +155,6 @@
           { gridIndex: 4 },
           { gridIndex: 5 },
           { gridIndex: 6 },
-          { gridIndex: 7 },
-          { gridIndex: 8 },
-          { gridIndex: 9 },
         ],
 
         grid: [
@@ -216,109 +165,77 @@
           { left: '7%', top: '640px', width: '38%', height: '200px' },
           { right: '7%', top: '640px', width: '38%', height: '200px' },
           { left: '7%', top: '940px', width: '38%', height: '200px' },
-          { right: '7%', top: '940px', width: '38%', height: '200px' },
-          { left: '7%', top: '1240px', width: '38%', height: '200px' },
-          { right: '7%', top: '1240px', width: '38%', height: '200px' },
         ],
 
         series: [
           {
-            name: 'Data PLOAD',
+            name: 'Data SAE',
             type: 'line',
             showSymbol: false,
             itemStyle: { color: 'rgba(58,77,233,0.8)' },
             areaStyle: { color: 'rgba(58,77,233,0.3)' },
-            data: dataPLOAD,
+            data: dataSAE,
           },
           {
-            name: 'Data CALIM',
+            name: 'Data BLOCK',
             type: 'line',
             showSymbol: false,
             itemStyle: { color: 'rgba(58,77,233,0.8)' },
             areaStyle: { color: 'rgba(58,77,233,0.3)' },
             xAxisIndex: 1,
             yAxisIndex: 1,
-            data: dataCALIM,
+            data: dataBLOCK,
+            dataCNTRTYP,
           },
           {
-            name: 'Data OFFDO',
+            name: 'Data CNTRTYP',
             type: 'line',
             showSymbol: false,
             itemStyle: { color: 'rgba(58,77,233,0.8)' },
             areaStyle: { color: 'rgba(58,77,233,0.3)' },
             xAxisIndex: 2,
             yAxisIndex: 2,
-            data: dataOFFDO,
+            data: dataCNTRTYP,
           },
           {
-            name: 'Data OFFDI',
+            name: 'Data NI',
             type: 'line',
             showSymbol: false,
             itemStyle: { color: 'rgba(58,77,233,0.8)' },
             areaStyle: { color: 'rgba(58,77,233,0.3)' },
             xAxisIndex: 3,
             yAxisIndex: 3,
-            data: dataOFFDI,
+            data: dataNI,
           },
           {
-            name: 'Data FTCHDO',
+            name: 'Data NIU',
             type: 'line',
             showSymbol: false,
             itemStyle: { color: 'rgba(58,77,233,0.8)' },
             areaStyle: { color: 'rgba(58,77,233,0.3)' },
             xAxisIndex: 4,
             yAxisIndex: 4,
-            data: dataFTCHDO,
+            data: dataNIU,
           },
           {
-            name: 'Data FTCHDI',
+            name: 'Data NIE',
             type: 'line',
             showSymbol: false,
             itemStyle: { color: 'rgba(58,77,233,0.8)' },
             areaStyle: { color: 'rgba(58,77,233,0.3)' },
             xAxisIndex: 5,
             yAxisIndex: 5,
-            data: dataFTCHDI,
+            data: dataNIE,
           },
           {
-            name: 'Data OFFMPH',
+            name: 'Data NIR',
             type: 'line',
             showSymbol: false,
             itemStyle: { color: 'rgba(58,77,233,0.8)' },
             areaStyle: { color: 'rgba(58,77,233,0.3)' },
             xAxisIndex: 6,
             yAxisIndex: 6,
-            data: dataOFFMPH,
-          },
-          {
-            name: 'Data OFFMPL',
-            type: 'line',
-            showSymbol: false,
-            itemStyle: { color: 'rgba(58,77,233,0.8)' },
-            areaStyle: { color: 'rgba(58,77,233,0.3)' },
-            xAxisIndex: 7,
-            yAxisIndex: 7,
-            data: dataOFFMPL,
-          },
-          {
-            name: 'Data FTCHMPH',
-            type: 'line',
-            showSymbol: false,
-            itemStyle: { color: 'rgba(58,77,233,0.8)' },
-            areaStyle: { color: 'rgba(58,77,233,0.3)' },
-            xAxisIndex: 8,
-            yAxisIndex: 8,
-            data: dataFTCHMPH,
-          },
-          {
-            name: 'Data FTCHMPL',
-            type: 'line',
-            showSymbol: false,
-            itemStyle: { color: 'rgba(58,77,233,0.8)' },
-            areaStyle: { color: 'rgba(58,77,233,0.3)' },
-            xAxisIndex: 9,
-            yAxisIndex: 9,
-            data: dataFTCHMPL,
+            data: dataNIR,
           },
         ],
       };
