@@ -17,7 +17,7 @@ const {
 const router = express.Router();
 
 router.get('/', function (request, response) {
-  response.send('alarm');
+  response.render('pages/home');
 });
 
 router.get('/list-alarm1', getList1);
