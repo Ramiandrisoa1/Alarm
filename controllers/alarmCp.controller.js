@@ -1,7 +1,6 @@
 const moment = require('moment');
 const mysql = require('mysql2');
 
-
 let connectionData = {
   host: 'localhost',
   port: 3306,
@@ -15,7 +14,7 @@ let connectionData = {
 const db = mysql.createConnection(connectionData);
 
 const alarm = [];
-const getAlarm1 = async (res) => {
+const getAlarm1 = async res => {
   const textSplit = res.split('\n');
   textSplit.map((text, index) => {
     if (text.includes('INT')) {
@@ -45,36 +44,6 @@ const getAlarm1 = async (res) => {
     }
   });
   // saveData1(alarm);
-};
-
-const getAlarm2 = res => {
-  const textSplit = res.split('\n');
-  textSplit.map((text, index) => {
-    const obj = {};
-    if (text.includes('SAE') && !text.includes('>')) {
-      const textTmp = text
-        .split(/((?:\w+ ){1})/g)
-        .map(data => {
-          if (data.replace(/\s/g, '')) {
-            return data.replace(/\s/g, '');
-          }
-        })
-        .filter(data => data !== undefined);
-      const value = textSplit[index + 1]
-        .split(/((?:\w+ ){1})/g)
-        .map(data => {
-          if (data.replace(/\s/g, '')) {
-            return data.replace(/\s/g, '');
-          }
-        })
-        .filter(data => data !== undefined);
-      for (let i = 0; i < 7; i++) {
-        obj[textTmp[i]] = value[i];
-      }
-      alarm.push(obj);
-    }
-  });
-  // saveData2(alarm);
 };
 
 const saveData1 = data => {
@@ -135,7 +104,60 @@ const saveData1 = data => {
   }
 };
 
+const getList1 = (request, response) => {
+  db.query('SELECT * FROM `alarm1`', (error, res) => {
+    if (error) throw error;
+    response.render('pages/alarm1', {
+      res: res,
+    });
+  });
+};
+
+const getGraphe1 = (request, response) => {
+  db.query('SELECT * FROM `alarm1`', (error, res) => {
+    if (error) throw error;
+    response.render('pages/graphe1', {
+      graphe: res,
+    });
+  });
+};
+
+const alarmList1 = (request, response) => {
+  db.query('SELECT * FROM `alarm1`', (error, res) => {
+    return response.status(201).json(res);
+  });
+};
+
+const getList2 = (request, response) => {
+  db.query('SELECT * FROM `alarm2`', (error, res) => {
+    if (error) throw error;
+    response.render('pages/alarm2', {
+      res: res,
+    });
+  });
+};
+
+const getGraphe2 = (request, response) => {
+  db.query('SELECT * FROM `alarm2`', (error, res) => {
+    if (error) throw error;
+    response.render('pages/graphe2', {
+      res: res,
+    });
+  });
+};
+
+const alarmList2 = (request, response) => {
+  db.query('SELECT * FROM `alarm2`', (error, res) => {
+    return response.status(201).json(res);
+  });
+};
+
 module.exports = {
   getAlarm1,
-  getAlarm2,
+  getList1,
+  getGraphe1,
+  alarmList1,
+  getList2,
+  getGraphe2,
+  alarmList2,
 };

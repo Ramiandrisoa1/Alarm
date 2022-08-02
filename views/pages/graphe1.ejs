@@ -1,7 +1,7 @@
 <%- include('./index') %>
 <div id="graphe1" style="width: 1500px; height: 200vh"></div>
 <script type="text/javascript">
-  $.get('http://localhost:8080/alarms1', function (data) {
+  $.get('http://localhost:8080/api/alarms1', function (data) {
     const date = [];
     const PLOADvalue = [];
     const CALIMvalue = [];

@@ -1,7 +1,7 @@
 <%- include('./index') %>
 <div id="graphe2" style="width: 1500px; height: 170vh"></div>
 <script type="text/javascript">
-  $.get('http://localhost:8080/alarms2', function (data) {
+  $.get('http://localhost:8080/api/alarms2', function (data) {
     const date = [];
     const OFFTCAPvalue = [];
     const FTDTCAPvalue = [];

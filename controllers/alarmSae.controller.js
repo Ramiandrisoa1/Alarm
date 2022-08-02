@@ -15,7 +15,7 @@ const db = mysql.createConnection(connectionData);
 
 const alarm = [];
 
-const getAlarm2 = res => {
+const getAlarm3 = res => {
   const textSplit = res.split('\n');
   textSplit.map((text, index) => {
     const obj = {};
@@ -42,41 +42,67 @@ const getAlarm2 = res => {
       alarm.push(obj);
     }
   });
-//   saveData2(alarm);
+  //   saveData3(alarm);
 };
 
-
-const saveData2 = data => {
+const saveData3 = data => {
   let date = moment().format('YYYY-MM-D  HH:mm:ss');
   for (let i = 0; i < data.length; i++) {
     const al = data[i];
-      db.query(
-        "INSERT INTO `alarm3` (`SAE`, `BLOCK`, `CNTRTYP`, `NI`, `NIU`, `NIE`, `NIR`, `dateCreate`) VALUES ('" +
-          al.SAE +
-          "', '" +
-          al.BLOCK +
-          "', '" +
-          al.CNTRTYP +
-          "', '" +
-          al.NI +
-          "', '" +
-          al.NIU +
-          "', '" +
-          al.NIE +
-          "', '" +
-          al.NIR +
-          "', '" +
-          date +
-          "');",
-        al,
-        function (err, result) {
-          if (err) throw err;
-          console.log('data 1 inserted');
-        }
-      );
+    db.query(
+      "INSERT INTO `alarm3` (`SAE`, `BLOCK`, `CNTRTYP`, `NI`, `NIU`, `NIE`, `NIR`, `dateCreate`) VALUES ('" +
+        al.SAE +
+        "', '" +
+        al.BLOCK +
+        "', '" +
+        al.CNTRTYP +
+        "', '" +
+        al.NI +
+        "', '" +
+        al.NIU +
+        "', '" +
+        al.NIE +
+        "', '" +
+        al.NIR +
+        "', '" +
+        date +
+        "');",
+      al,
+      function (err, result) {
+        if (err) throw err;
+        console.log('data 1 inserted');
+      }
+    );
   }
 };
 
+const getList3 = (request, response) => {
+  db.query('SELECT * FROM `alarm3`', (error, res) => {
+    if (error) throw error;
+    response.render('pages/alarm3', {
+      res: res,
+    });
+  });
+};
+
+const getGraphe3 = (request, response) => {
+  db.query('SELECT * FROM `alarm3`', (error, res) => {
+    if (error) throw error;
+    response.render('pages/graphe3', {
+      res: res,
+    });
+  });
+};
+
+const alarmList3 = (request, response) => {
+  db.query('SELECT * FROM `alarm3`', (error, res) => {
+    return response.status(201).json(res);
+  });
+};
+
 module.exports = {
-  getAlarm2,
+  getAlarm3,
+  getList3,
+  getGraphe3,
+  alarmList3,
 };
