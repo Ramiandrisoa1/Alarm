@@ -1,0 +1,36 @@
+<%- include('./index') %>
+<div class="table-content-1">
+  <div class="btn-graphe d-flex justify-content-end">
+    <button>
+      <a href="http://localhost:8080/list-alarm3/graphe3">Graphe</a>
+    </button>
+  </div>
+  <table id="table_data" class="table table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">SAE</th>
+        <th scope="col">BLOCK</th>
+        <th scope="col">CNTRTYP</th>
+        <th scope="col">NI</th>
+        <th scope="col">NIU</th>
+        <th scope="col">NIE</th>
+        <th scope="col">NIR</th>
+        <th scope="col">DATE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% res.forEach(function(alarm) { %>
+      <tr>
+        <td><%= alarm.SAE %></td>
+        <td><%= alarm.BLOCK %></td>
+        <td><%= alarm.CNTRTYP %></td>
+        <td><%= alarm.NI %></td>
+        <td><%= alarm.NIU %></td>
+        <td><%= alarm.NIE %></td>
+        <td><%= alarm.NIR %></td>
+        <td><%= alarm.dateCreate %></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>
