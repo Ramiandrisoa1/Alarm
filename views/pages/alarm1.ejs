@@ -1,44 +1,46 @@
-<%- include('./index') %>
-<div class="table-content-1">
-  <div class="btn-graphe d-flex justify-content-end">
-    <button>
-      <a href="http://localhost:8080/api/list-alarm1/graphe1">Graphe</a>
-    </button>
+<%- include('./index') %> <%- include('./header') %>
+<div class="main-content">
+  <div class="table-content-1">
+    <div class="btn-graphe d-flex justify-content-end">
+      <button>
+        <a href="http://localhost:8080/api/list-alarm1/graphe1">Graphe</a>
+      </button>
+    </div>
+    <table id="table_data" class="table table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">INT</th>
+          <th scope="col">PLOAD</th>
+          <th scope="col">CALIM</th>
+          <th scope="col">OFFDO</th>
+          <th scope="col">OFFDI</th>
+          <th scope="col">FTCHDO</th>
+          <th scope="col">FTCHDI</th>
+          <th scope="col">OFFMPH</th>
+          <th scope="col">OFFMPL</th>
+          <th scope="col">FTCHMPH</th>
+          <th scope="col">FTCHMPL</th>
+          <th scope="col">DATE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% res.forEach(function(alarm) { %>
+        <tr>
+          <td><%= alarm.INT %></td>
+          <td><%= alarm.PLOAD %></td>
+          <td><%= alarm.CALIM %></td>
+          <td><%= alarm.OFFDO %></td>
+          <td><%= alarm.OFFDI %></td>
+          <td><%= alarm.FTCHDO %></td>
+          <td><%= alarm.FTCHDI %></td>
+          <td><%= alarm.OFFMPH %></td>
+          <td><%= alarm.OFFMPL %></td>
+          <td><%= alarm.FTCHMPH %></td>
+          <td><%= alarm.FTCHMPL %></td>
+          <td><%= alarm.dateCreate %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
   </div>
-  <table id="table_data" class="table table-striped">
-    <thead class="table-dark">
-      <tr>
-        <th scope="col">INT</th>
-        <th scope="col">PLOAD</th>
-        <th scope="col">CALIM</th>
-        <th scope="col">OFFDO</th>
-        <th scope="col">OFFDI</th>
-        <th scope="col">FTCHDO</th>
-        <th scope="col">FTCHDI</th>
-        <th scope="col">OFFMPH</th>
-        <th scope="col">OFFMPL</th>
-        <th scope="col">FTCHMPH</th>
-        <th scope="col">FTCHMPL</th>
-        <th scope="col">DATE</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% res.forEach(function(alarm) { %>
-      <tr>
-        <td><%= alarm.INT %></td>
-        <td><%= alarm.PLOAD %></td>
-        <td><%= alarm.CALIM %></td>
-        <td><%= alarm.OFFDO %></td>
-        <td><%= alarm.OFFDI %></td>
-        <td><%= alarm.FTCHDO %></td>
-        <td><%= alarm.FTCHDI %></td>
-        <td><%= alarm.OFFMPH %></td>
-        <td><%= alarm.OFFMPL %></td>
-        <td><%= alarm.FTCHMPH %></td>
-        <td><%= alarm.FTCHMPL %></td>
-        <td><%= alarm.dateCreate %></td>
-      </tr>
-      <% }); %>
-    </tbody>
-  </table>
 </div>

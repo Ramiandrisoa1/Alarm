@@ -10,7 +10,7 @@
   width: 670px;
 }
 
-body {
+.main-content {
   display: flex;
   justify-content: center;
 }
