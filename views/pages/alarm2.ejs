@@ -1,30 +1,28 @@
-<%- include('./index') %> <%- include('./header') %>
-<div class="main-content">
-  <div class="table-content-2">
-    <div class="btn-graphe d-flex justify-content-end">
-      <button>
-        <a href="http://localhost:8080/api/list-alarm2/graphe2">Graphe</a>
-      </button>
-    </div>
-    <table id="table_data" class="table table-striped">
-      <thead class="table-dark">
-        <tr>
-          <th scope="col">INT</th>
-          <th scope="col">OFFTCAP</th>
-          <th scope="col">FTDTCAP</th>
-          <th scope="col">DATE</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% res.forEach(function(alarm) { %>
-        <tr>
-          <td><%= alarm.INT %></td>
-          <td><%= alarm.OFFTCAP %></td>
-          <td><%= alarm.FTDTCAP %></td>
-          <td><%= alarm.dateCreate %></td>
-        </tr>
-        <% }); %>
-      </tbody>
-    </table>
+<%- include('./index') %>
+<div class="table-content-2">
+  <div class="btn-graphe d-flex justify-content-end">
+    <button>
+      <a href="http://localhost:8080/api/list-alarm2/graphe2">Graphe</a>
+    </button>
   </div>
+  <table id="table_data" class="table table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">INT</th>
+        <th scope="col">OFFTCAP</th>
+        <th scope="col">FTDTCAP</th>
+        <th scope="col">DATE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% res.forEach(function(alarm) { %>
+      <tr>
+        <td><%= alarm.INT %></td>
+        <td><%= alarm.OFFTCAP %></td>
+        <td><%= alarm.FTDTCAP %></td>
+        <td><%= alarm.dateCreate %></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
 </div>

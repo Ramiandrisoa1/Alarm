@@ -1,2 +1,19 @@
-<%- include('./index') %> <%- include('./header') %>
-<div class="home-content">Welcome</div>
+<%- include('./header') %>
+<script>
+  $(document).ready(function () {
+    var clickEvents = $('.nav-item');
+    clickEvents.on('click', function () {
+      var self = $(this);
+      var url = self.find('a').attr('href').replace('#', '');
+      localStorage.setItem('url-active', url);
+      clickEvents.removeClass('active-link');
+      self.addClass('active-link');
+      var url_active = localStorage.getItem('url-active');
+      console.log(url_active);
+      $.get(`http://localhost:8080/api/${url_active}`, function (data) {
+        $('#testooo').html(data);
+      });
+    });
+  });
+</script>
+<div id="testooo" class="main-content">drgzs</div>

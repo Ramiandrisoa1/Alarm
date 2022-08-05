@@ -65,3 +65,12 @@
   color: #000;
   transition: all 0.2s ease-in-out;
 }
+
+.active-link a {
+  color: red !important;
+}
+
+.img-alarm {
+  width: 40px;
+  height: 40px;
+}
