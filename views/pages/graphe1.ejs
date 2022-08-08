@@ -2,8 +2,8 @@
 <div class="row height d-flex justify-content-center align-items-center">
   <div class="col-md-8">
     <div class="search">
-      <input type="text" class="form-control" placeholder="Rechercher">
-      <button class="btn btn-primary">Chercher</button>
+      <input id="search-input" type="text" class="form-control" placeholder="Rechercher">
+      <button class="btn btn-primary" onclick="search()">Chercher</button>
     </div>
   </div>
 </div>
@@ -12,8 +12,18 @@
   </div>
 </div>
 <script type="text/javascript">
-  $.get('http://localhost:8080/api/alarms1', function (data) {
-    const date = [];
+
+  const date = [];
+  function search() {
+    var inputVal = document.getElementById("search-input").value;
+    const filterDate = !search
+    ? date
+    : date.filter((res) => {
+      return res.toLowerCase().includes(inputVal.toLowerCase());
+    })
+  };
+
+  function graphes(data) {
     const PLOADvalue = [];
     const CALIMvalue = [];
     const OFFDOvalue = [];
@@ -24,6 +34,7 @@
     const OFFMPLvalue = [];
     const FTCHMPHvalue = [];
     const FTCHMPLvalue = [];
+        
     for (let i = 0; i < data.length; i++) {
       let d = data[i];
       date.push(d.dateCreate);
@@ -294,5 +305,7 @@
 
       option && myChart.setOption(option);
     }
-  });
-</script>
+  }
+
+  $.get('http://localhost:8080/api/alarms1', graphes);
+  </script>
