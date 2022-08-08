@@ -11,8 +11,8 @@ let connectionData = {
   host: 'localhost',
   port: 3306,
   database: 'alarm',
-  user: 'fabio',
-  password: 'fabio',
+  user: 'root',
+  password: 'root',
   multipleStatements: true,
   connectionLimit: 10,
 };
