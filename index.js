@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const axios = require('axios');
 const mysql = require('mysql2');
 const alarmes = require('./routes/alarm.route');
+const bodyParser = require('body-parser');
 const { getAlarm1 } = require('./controllers/alarmCp.controller');
 const { getAlarm3 } = require('./controllers/alarmSae.controller');
 
@@ -31,12 +32,13 @@ db.connect(err => {
 dotenv.config();
 
 const app = express();
+app.use(bodyParser.json());
 
 app.set('view engine', 'ejs');
 
 const test = {
   nodeIP: '10.32.2.6',
-  cmd: 'SAAEP:SAE=604,BLOCK=SCCLM',
+  cmd: '-cp cp1 plldp',
 };
 
 const getDataAlarm = data => {
