@@ -123,7 +123,6 @@ const getGraphe1 = (request, response) => {
 };
 
 const getAlarmInterval = async (req, res) => {
-  dates = req.body;
   try {
     return res.status(201).json({
       dates: req.body,
@@ -134,16 +133,12 @@ const getAlarmInterval = async (req, res) => {
 }
 
 const alarmList1 = (request, response) => {
-  if (!dates) {
     db.query('SELECT * FROM `alarm1`', (error, res) => {
       return response.status(201).json(res);
     });
-  } else {
-    db.query("SELECT * FROM `alarm1` WHERE dateCreate BETWEEN '2022-08-08 09:41:55' AND '2022-08-08 09:42:30'", (error, res) => {
-      return response.status(201).json(res);
-    })
-  }
-
+    // db.query("SELECT * FROM `alarm1` WHERE dateCreate BETWEEN '2022-08-08 09:41:55' AND '2022-08-08 09:42:30'", (error, res) => {
+    //   return response.status(201).json(res);
+    // })
 };
 
 const getList2 = (request, response) => {
