@@ -46,7 +46,7 @@ const getAlarm3 = res => {
 };
 
 const saveData3 = data => {
-  let date = moment().format('YYYY-MM-D  HH:mm:ss');
+  let date = moment().format('YYYY-MM-DD  HH:mm:ss');
   for (let i = 0; i < data.length; i++) {
     const al = data[i];
     db.query(
