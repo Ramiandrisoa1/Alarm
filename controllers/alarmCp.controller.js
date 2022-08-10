@@ -47,7 +47,7 @@ const getAlarm1 = async res => {
 };
 
 const saveData1 = data => {
-  let date = moment().format('YYYY-MM-D  HH:mm:ss');
+  let date = moment().format('YYYY-MM-DD HH:mm:ss');
   for (let i = 0; i < data.length; i++) {
     const al = data[i];
     if (al.PLOAD) {
@@ -122,10 +122,28 @@ const getGraphe1 = (request, response) => {
   });
 };
 
+const getAlarmInterval = async (req, res) => {
+  dates = req.body;
+  try {
+    return res.status(201).json({
+      dates: req.body,
+    });
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+}
+
 const alarmList1 = (request, response) => {
-  db.query('SELECT * FROM `alarm1`', (error, res) => {
-    return response.status(201).json(res);
-  });
+  if (!dates) {
+    db.query('SELECT * FROM `alarm1`', (error, res) => {
+      return response.status(201).json(res);
+    });
+  } else {
+    db.query("SELECT * FROM `alarm1` WHERE dateCreate BETWEEN '2022-08-08 09:41:55' AND '2022-08-08 09:42:30'", (error, res) => {
+      return response.status(201).json(res);
+    })
+  }
+
 };
 
 const getList2 = (request, response) => {
@@ -160,4 +178,5 @@ module.exports = {
   getList2,
   getGraphe2,
   alarmList2,
+  getAlarmInterval,
 };

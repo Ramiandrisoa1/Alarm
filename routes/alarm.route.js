@@ -6,6 +6,7 @@ const {
   getList2,
   getGraphe2,
   alarmList2,
+  getAlarmInterval,
 } = require('../controllers/alarmCp.controller');
 
 const {
@@ -37,5 +38,7 @@ router.get('/list-alarm3', getList3);
 router.get('/list-alarm3/graphe3', getGraphe3);
 
 router.get('/alarms3', alarmList3);
+
+router.post('/poste-date', getAlarmInterval);
 
 module.exports = { routes: router };
